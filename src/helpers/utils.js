@@ -165,8 +165,8 @@ export function arrayIndexOf(elt /*, from*/) {
 
 	var from = Number(arguments[1]) || 0;
 	from = (from < 0)
-		 ? Math.ceil(from)
-		 : Math.floor(from);
+		? Math.ceil(from)
+		: Math.floor(from);
 	if (from < 0)
 		from += len;
 
@@ -180,11 +180,11 @@ export function arrayIndexOf(elt /*, from*/) {
 
 //IE8- Fix: indexOf is not supported in IE8- for arrays
 export function addArrayIndexOf(obj) {
-if (!obj.indexOf) {
-	obj.indexOf = arrayIndexOf;
-}
+	if (!obj.indexOf) {
+		obj.indexOf = arrayIndexOf;
+	}
 
-return obj;
+	return obj;
 }
 
 var fontHeightInPixels = {};
@@ -713,17 +713,17 @@ var optimizeForHiDPI = true;
 
 var devicePixelRatio = window.devicePixelRatio || 1;
 var backingStoreRatio = 1;
-var devicePixelBackingStoreRatio = optimizeForHiDPI ? devicePixelRatio / backingStoreRatio : 1;
+export var devicePixelBackingStoreRatio = optimizeForHiDPI ? devicePixelRatio / backingStoreRatio : 1;
 
 export function setCanvasSize(canvas, width, height) {
 
 	if (isCanvasSupported && !!optimizeForHiDPI) {
 		var ctx = canvas.getContext("2d");
 		backingStoreRatio = ctx.webkitBackingStorePixelRatio ||
-							ctx.mozBackingStorePixelRatio ||
-							ctx.msBackingStorePixelRatio ||
-							ctx.oBackingStorePixelRatio ||
-							ctx.backingStorePixelRatio || 1;
+			ctx.mozBackingStorePixelRatio ||
+			ctx.msBackingStorePixelRatio ||
+			ctx.oBackingStorePixelRatio ||
+			ctx.backingStorePixelRatio || 1;
 
 
 		devicePixelBackingStoreRatio = devicePixelRatio / backingStoreRatio;
@@ -812,8 +812,8 @@ export function exportCanvas(canvas, format, fileName) {
 			event = document.createEvent("MouseEvents");
 
 			event.initMouseEvent("click", true, false, window,
-							 0, 0, 0, 0, 0, false, false, false,
-							 false, 0, null);
+				0, 0, 0, 0, 0, false, false, false,
+				false, 0, null);
 
 			if (downloadLink.dispatchEvent) {
 				//alert("dispatchEvent");
@@ -856,10 +856,10 @@ export function setButtonState(chart, button, state) {
 		button.setAttribute("type", 'button');
 		button.style.position = "relative";
 		button.style.margin = "0px 0px 0px 0px";
-	    button.style.padding = "3px 4px 0px 4px";
-	    button.style.cssFloat = "left";
+		button.style.padding = "3px 4px 0px 4px";
+		button.style.cssFloat = "left";
 		button.setAttribute("title", chart._cultureInfo[state + "Text"]);
-	    button.innerHTML = "<img style='height:16px;' src='" + base64Images[state].image + "' alt='" + chart._cultureInfo[state + "Text"] + "' />";
+		button.innerHTML = "<img style='height:16px;' src='" + base64Images[state].image + "' alt='" + chart._cultureInfo[state + "Text"] + "' />";
 	}
 }
 
